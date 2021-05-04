@@ -1,0 +1,18 @@
+{
+  "name": "module7_homework",
+  "version": "1.0.0",
+  "scripts": {
+    "dev-01": "nodemon src/task_01.ts",
+    "run-01": "ts-node src/task_01.ts",
+    "dev-02": "nodemon src/task_02.ts",
+    "run-02": "ts-node src/task_02.ts",
+    "dev-03": "nodemon src/task_03.ts",
+    "run-03": "ts-node src/task_03.ts"
+  },
+  "author": "Le Ma",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^15.0.1"
+  }
+}
