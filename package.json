@@ -7,7 +7,9 @@
     "dev-02": "nodemon src/task_02.ts",
     "run-02": "ts-node src/task_02.ts",
     "dev-03": "nodemon src/task_03.ts",
-    "run-03": "ts-node src/task_03.ts"
+    "run-03": "ts-node src/task_03.ts",
+    "dev-04": "nodemon src/task_04.js",
+    "run-04": "node src/task_04.js"
   },
   "author": "Le Ma",
   "license": "MIT",
