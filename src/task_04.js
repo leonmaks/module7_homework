@@ -1,59 +1,38 @@
-/* Задание 4
-Реализовать следующее консольное приложение подобно примеру, который разбирался в видео. Реализуйте его на прототипах.
-Определить иерархию электроприборов. Включить некоторые в розетку. Посчитать потребляемую мощность.
-Таких приборов должно быть, как минимум, два (например, настольная лампа и компьютер). Выбрав прибор, подумайте, какими свойствами он обладает.
+/* Задание 5
+Переписать консольное приложение из предыдущего юнита на классы. */
 
-План:
-1. Определить родительскую функцию с методами, которые включают/выключают прибор из розетки;
-2. Создать делегирующую связь [[Prototype]] для двух конкретных приборов;
-3. У каждого из приборов должны быть собственные свойства и, желательно, методы, отличные от родительских методов;
-4. Создать экземпляры каждого прибора;
-5. Вывести в консоль и посмотреть результаты работы, гордиться собой :)
-
-Общие требования:
-1. Имена функций, свойств и методов должны быть информативными
-2. Соблюдать best practices:
-    * использование camelCase нотации для переменных и методов, PascalCase для названия функций-конструкторов и классов;
-    * информативные имена (а не a, b);
-    * четкая связь между классом и его экземплярами (класс описывает множество, а экземпляр конкретную реализацию);
-    * использование синтаксиса es6 (кроме функции-конструкторов) и т.д. */
-
-function ElectroSuper(name = "Electro") {
+function Electro(name = "Electro") {
   this.name = name
   this.turnedOn = false
 }
 
-ElectroSuper.prototype.myName = function () {
-  return this.name
-}
-
-ElectroSuper.prototype.turnOn = function () {
+Electro.prototype.turnOn = function () {
   this.turnedOn = true
-  this.myStatus()
+  this.sayStatus()
 }
 
-ElectroSuper.prototype.turnOff = function () {
+Electro.prototype.turnOff = function () {
   this.turnedOn = false
-  this.myStatus()
+  this.sayStatus()
 }
 
-ElectroSuper.prototype.myStatus = function () {
-  console.log(`${this.myName()}: I am now '${this.turnedOn === true ? "ON" : "OFF"}'`)
+Electro.prototype.sayStatus = function () {
+  console.log(`${this.name}: I am now '${this.turnedOn === true ? "ON" : "OFF"}'`)
 }
 
-ElectroSuper.prototype.whoAmI = function () {
-  console.log(`I am a '${this.myName()}'`)
+Electro.prototype.whoAmI = function () {
+  console.log(`I am a '${this.name}'`)
 }
 
 function Lamp() {
   this.name = "Lamp"
-  this.power = 600
+  this.power = 60
 }
 
-Lamp.prototype = new ElectroSuper()
+Lamp.prototype = new Electro()
 
 Lamp.prototype.myPower = function () {
-  console.log(`${this.myName()}: My power is ${this.power} watt`)
+  console.log(`${this.name}: My power is ${this.power} watt`)
 }
 
 function Computer(cpu, mem, hd) {
@@ -62,10 +41,10 @@ function Computer(cpu, mem, hd) {
   this.hd = hd
 }
 
-Computer.prototype = new ElectroSuper("Computer")
+Computer.prototype = new Electro("Computer")
 
 Computer.prototype.myCharacteristics = function() {
-  console.log(`${this.myName()}: My charecteristics: CPU: '${this.cpu}', MEM: '${this.mem}', HD: '${this.hd}'`)
+  console.log(`${this.name}: My charecteristics: CPU: '${this.cpu}', MEM: '${this.mem}', HD: '${this.hd}'`)
 }
 
 const lamp = new Lamp()
